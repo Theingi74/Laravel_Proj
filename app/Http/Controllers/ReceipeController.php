@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Receipe;
 use App\Category;
+use App\test;
+use App\Mail\ReceipeStored;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ReceipeController extends Controller
 {
@@ -20,7 +23,6 @@ class ReceipeController extends Controller
      */
     public function index()
     {
-
         $data = Receipe::where('author_id',auth()->id())->get();
         /*dd(auth()->check());*/
         return view('home',compact('data'));
@@ -46,7 +48,7 @@ class ReceipeController extends Controller
     public function store(Request $request)
     {
        /*dd(request()->all());*/
-       Receipe::create($this->validation($request) + ['author_id' => auth()->id()]);
+       $receipe =Receipe::create($this->validation($request) + ['author_id' => auth()->id()]);
        return redirect('receipe');
     }
 
@@ -58,6 +60,8 @@ class ReceipeController extends Controller
      */
     public function show(Receipe $receipe)
     {
+
+       /* dd($test);*/
         /*dd($receipe->categories->name);*/
       /*  if ($receipe->author_id != auth()->id()) {
             abort(404);
@@ -93,7 +97,7 @@ class ReceipeController extends Controller
         $validatedData = $this->validation($request);
 
         $receipe->update($validatedData);
-        return redirect('receipe');
+        return redirect('receipe')->with("session_message","Receipe has been Successfully Updated!!");
 
     }
 
@@ -106,6 +110,7 @@ class ReceipeController extends Controller
     public function destroy(Receipe $receipe)
     {
         $receipe->delete();
+        session()->flash("session_message","Receipe has been Successfully deleted!!");
         return redirect('receipe');
     }
 
