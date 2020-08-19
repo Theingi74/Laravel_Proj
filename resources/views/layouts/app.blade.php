@@ -37,7 +37,7 @@
           <div class="sidebar-heading">Admin Panel </div>
           <div class="list-group list-group-flush">
             <a href="#" class="list-group-item list-group-item-action bg-light">Receipe</a>
-            <a href="#" class="list-group-item list-group-item-action bg-light">Category</a>
+            <a href="categoryHome" class="list-group-item list-group-item-action bg-light">Category</a>
           </div>
         </div>
     @endguest
