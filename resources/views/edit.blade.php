@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('title')
   Edit Page
@@ -33,7 +33,8 @@
 	  		<option value="{{ $receipe->categories->id}}" selected>{{ $receipe->categories->name}}</option>
 	  	</select>	  	
 	  </div> -->
-	  {{$receipe->categories->id}}
+	  <!-- {{$receipe->categories->id}} -->
+	  <label for="exampleInputPassword1">Category </label>
 	  <div class="form-group">
 	  	<select class="form-control" name="category">
 	  		@foreach ($category as $value)

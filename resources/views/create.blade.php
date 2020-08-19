@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('title')
   Register Page
@@ -30,6 +30,7 @@
 	    <input type="text" name="ingredients" class="form-control" id="ingredients"  value="{{ old('ingredients')}}">
 	  </div>
 	  <div class="form-group">
+	  	<label for="exampleInputPassword1">Category </label>
 	  	<select class="form-group form-control" name="category">
 	  		@foreach ($category as $value)
 	  			<option value='{{$value->id}}'>{{ $value->name }}</option>
